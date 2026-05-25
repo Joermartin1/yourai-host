@@ -6,163 +6,133 @@
   <title>Custos Aurum™ — YourAI.Host</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:      #0D1F5C;
-      --gold:      #F5A623;
-      --warmwhite: #FAFAF7;
-    }
-    html, body {
-      height: 100%;
-      font-family: 'DM Sans', sans-serif;
-      background: var(--navy);
-      color: var(--warmwhite);
-      overflow: hidden;
-    }
+    :root { --navy: #0D1F5C; --gold: #F5A623; --steel: #4F78B8; --bluemist: #D6E4F0; --warmwhite: #FAFAF7; }
+    html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--warmwhite); overflow: hidden; }
     body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background:
-        radial-gradient(ellipse 55% 45% at 50% 38%, rgba(245,166,35,0.09) 0%, transparent 70%),
-        radial-gradient(ellipse 75% 55% at 50% 100%, rgba(79,120,184,0.13) 0%, transparent 60%);
+      content: ''; position: fixed; inset: 0;
+      background: radial-gradient(ellipse 55% 45% at 50% 38%, rgba(245,166,35,0.09) 0%, transparent 70%),
+                  radial-gradient(ellipse 75% 55% at 50% 100%, rgba(79,120,184,0.13) 0%, transparent 60%);
       pointer-events: none;
     }
     body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image:
-        linear-gradient(rgba(214,228,240,0.034) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(214,228,240,0.034) 1px, transparent 1px);
-      background-size: 56px 56px;
-      pointer-events: none;
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(214,228,240,0.034) 1px, transparent 1px), linear-gradient(90deg, rgba(214,228,240,0.034) 1px, transparent 1px);
+      background-size: 56px 56px; pointer-events: none;
     }
     .page {
-      position: relative; z-index: 1;
-      height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      position: relative; z-index: 1; height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 40px 28px;
     }
+
+    /* Logo lockup — inline SVG mark + wordmark */
     .logo {
+      display: flex; align-items: center; gap: 10px;
       margin-bottom: 48px;
       opacity: 0; animation: rise 0.9s ease 0.1s forwards;
     }
-    .logo img {
-      height: 52px; width: auto; display: block;
-      image-orientation: none;
+    .logo-mark { flex-shrink: 0; }
+    .logo-text {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+    }
+    .logo-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 1.35rem;
+      color: var(--navy); /* navy on the svg bg */ 
+      letter-spacing: -0.02em;
+      color: var(--warmwhite);
+    }
+    .logo-byline {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300; font-size: 0.58rem;
+      letter-spacing: 0.08em; color: rgba(250,250,247,0.45);
     }
 
-    /* Headline — force italic via em tag + explicit font-face */
+    /* Headline */
     h1 {
       font-size: clamp(3.6rem, 8vw, 6.8rem);
-      line-height: 1.02;
-      letter-spacing: -0.01em;
-      color: var(--gold);
-      margin-bottom: 6px;
+      line-height: 1.02; letter-spacing: -0.01em;
+      color: var(--gold); margin-bottom: 6px;
       opacity: 0; animation: rise 0.9s ease 0.25s forwards;
     }
     h1 em {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--gold);
+      font-style: italic; font-weight: 300; color: var(--gold);
     }
     h1 .tm {
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.38em;
-      vertical-align: super;
-      font-weight: 400;
-      font-style: normal;
-      color: var(--gold);
+      font-size: 0.38em; vertical-align: super;
+      font-weight: 400; font-style: normal; color: var(--gold);
     }
 
     .subtitle {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
       font-size: clamp(0.8rem, 1.4vw, 0.98rem);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(250,250,247,0.42);
-      margin-bottom: 34px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(250,250,247,0.42); margin-bottom: 34px;
       opacity: 0; animation: rise 0.9s ease 0.42s forwards;
     }
-    .rule {
-      width: 44px; height: 1px;
-      background: rgba(245,166,35,0.28);
-      margin: 0 auto 34px;
-      opacity: 0; animation: rise 0.9s ease 0.52s forwards;
-    }
+    .rule { width: 44px; height: 1px; background: rgba(245,166,35,0.28); margin: 0 auto 34px; opacity: 0; animation: rise 0.9s ease 0.52s forwards; }
     .desc {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      font-size: clamp(0.84rem, 1.25vw, 0.96rem);
-      line-height: 2.15;
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      font-size: clamp(0.84rem, 1.25vw, 0.96rem); line-height: 2.15;
       color: rgba(250,250,247,0.48);
       opacity: 0; animation: rise 0.9s ease 0.62s forwards;
     }
     .desc strong { color: rgba(250,250,247,0.82); font-weight: 400; }
     .coming {
-      margin-top: 14px;
-      font-size: clamp(0.72rem, 1vw, 0.82rem);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(250,250,247,0.22);
-      font-weight: 300;
+      margin-top: 14px; font-size: clamp(0.72rem, 1vw, 0.82rem);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(250,250,247,0.22); font-weight: 300;
       opacity: 0; animation: rise 0.9s ease 0.72s forwards;
     }
     .btn {
-      display: inline-block;
-      margin-top: 44px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.79rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none;
-      color: var(--navy); background: var(--gold);
-      padding: 15px 40px;
+      display: inline-block; margin-top: 44px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.79rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      color: var(--navy); background: var(--gold); padding: 15px 40px;
       transition: background 0.2s, transform 0.2s;
       opacity: 0; animation: rise 0.9s ease 0.82s forwards;
     }
     .btn:hover { background: #f8b83a; transform: translateY(-2px); }
     .footer {
-      position: fixed; bottom: 24px; left: 0; right: 0;
-      text-align: center;
+      position: fixed; bottom: 24px; left: 0; right: 0; text-align: center;
       font-size: 0.64rem; font-weight: 300; letter-spacing: 0.09em;
       color: rgba(250,250,247,0.16);
       opacity: 0; animation: rise 0.9s ease 0.95s forwards;
     }
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @media (max-width: 480px) {
-      .logo img { height: 44px; }
-      .logo { margin-bottom: 36px; }
-    }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
 <div class="page">
 
+  <!-- Inline SVG logo lockup — no file dependency -->
   <div class="logo">
-    <img src="/auri-logo-primary.png" alt="Auri by AuriOS™" />
+    <svg class="logo-mark" width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="38" fill="#D6E4F0" opacity="0.18"/>
+      <circle cx="40" cy="40" r="28" fill="#4F78B8" opacity="0.55"/>
+      <circle cx="40" cy="40" r="18" fill="#0D1F5C"/>
+      <circle cx="40" cy="40" r="6" fill="#F5A623"/>
+    </svg>
+    <div class="logo-text">
+      <span class="logo-name">Auri</span>
+      <span class="logo-byline">by AuriOS™</span>
+    </div>
   </div>
 
   <h1><em>Custos Aurum</em><span class="tm">™</span></h1>
-
   <p class="subtitle">Your memory. Held in common.</p>
-
   <div class="rule"></div>
-
   <p class="desc">
     Your memories. <strong>Owned by you.</strong><br>
     Governed by its Members.<br>
     <strong>Your safe deposit box. Not their server.</strong>
   </p>
-
   <p class="coming">Coming soon.</p>
-
   <a class="btn" href="https://aurios.io">← Return to AuriOS™</a>
 
 </div>
