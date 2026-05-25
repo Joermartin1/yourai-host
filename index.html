@@ -6,13 +6,12 @@
   <title>Custos Aurum™ — YourAI.Host</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --navy:      #0D1F5C;
       --gold:      #F5A623;
-      --steel:     #4F78B8;
       --bluemist:  #D6E4F0;
       --warmwhite: #FAFAF7;
       --midgray:   #6B7280;
@@ -42,87 +41,132 @@
       align-items: center; justify-content: center;
       text-align: center; padding: 40px 28px;
     }
+
+    /* Logo */
     .logo {
-      display: flex; align-items: center; gap: 10px;
       margin-bottom: 44px;
       opacity: 0; animation: rise 0.9s ease 0.1s forwards;
     }
-    .logo img { height: 36px; width: auto; }
+    .logo img { height: 38px; width: auto; display: block; }
+
+    /* Headline */
     h1 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
-      font-size: clamp(3.8rem, 8vw, 7rem);
-      line-height: 1.0;
+      font-size: clamp(3.6rem, 8vw, 6.8rem);
+      line-height: 1.02;
       letter-spacing: -0.01em;
       color: var(--warmwhite);
       margin-bottom: 6px;
       opacity: 0; animation: rise 0.9s ease 0.25s forwards;
     }
-    h1 .tm { font-size: 0.38em; vertical-align: super; color: var(--gold); font-weight: 400; }
+    h1 .aurum {
+      color: var(--gold);
+      font-style: italic;
+    }
+    h1 .tm {
+      font-size: 0.38em;
+      vertical-align: super;
+      color: var(--gold);
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    /* Subtitle */
     .subtitle {
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
-      font-size: clamp(0.9rem, 1.6vw, 1.1rem);
-      letter-spacing: 0.12em;
+      font-size: clamp(0.82rem, 1.5vw, 1rem);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 36px;
-      opacity: 0; animation: rise 0.9s ease 0.4s forwards;
+      margin-bottom: 34px;
+      opacity: 0; animation: rise 0.9s ease 0.42s forwards;
     }
-    .rule { width: 44px; height: 1px; background: rgba(245,166,35,0.3); margin: 0 auto 36px; opacity: 0; animation: rise 0.9s ease 0.5s forwards; }
+
+    /* Rule */
+    .rule {
+      width: 44px; height: 1px;
+      background: rgba(245,166,35,0.3);
+      margin: 0 auto 34px;
+      opacity: 0; animation: rise 0.9s ease 0.52s forwards;
+    }
+
+    /* Body */
     .desc {
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
-      font-size: clamp(0.85rem, 1.3vw, 0.97rem);
-      line-height: 2.1;
-      color: rgba(250,250,247,0.52);
-      margin-bottom: 4px;
+      font-size: clamp(0.84rem, 1.25vw, 0.96rem);
+      line-height: 2.15;
+      color: rgba(250,250,247,0.5);
       opacity: 0; animation: rise 0.9s ease 0.62s forwards;
     }
-    .desc em { color: rgba(250,250,247,0.82); font-style: normal; }
+    .desc em { color: rgba(250,250,247,0.84); font-style: normal; }
+    .coming {
+      margin-top: 12px;
+      font-size: clamp(0.74rem, 1vw, 0.84rem);
+      letter-spacing: 0.07em;
+      color: rgba(250,250,247,0.28);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      opacity: 0; animation: rise 0.9s ease 0.72s forwards;
+    }
+
+    /* Button */
     .btn {
       display: inline-block;
       margin-top: 44px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.8rem; font-weight: 500;
+      font-size: 0.79rem; font-weight: 500;
       letter-spacing: 0.1em; text-transform: uppercase;
       text-decoration: none;
       color: var(--navy); background: var(--gold);
       padding: 15px 40px;
       transition: background 0.2s, transform 0.2s;
-      opacity: 0; animation: rise 0.9s ease 0.78s forwards;
+      opacity: 0; animation: rise 0.9s ease 0.82s forwards;
     }
     .btn:hover { background: #f8b83a; transform: translateY(-2px); }
+
+    /* Footer */
     .footer {
-      position: fixed; bottom: 26px; left: 0; right: 0;
+      position: fixed; bottom: 24px; left: 0; right: 0;
       text-align: center;
-      font-size: 0.66rem; font-weight: 300; letter-spacing: 0.09em;
-      color: rgba(250,250,247,0.18);
-      opacity: 0; animation: rise 0.9s ease 0.9s forwards;
+      font-size: 0.64rem; font-weight: 300; letter-spacing: 0.09em;
+      color: rgba(250,250,247,0.17);
+      opacity: 0; animation: rise 0.9s ease 0.95s forwards;
     }
+
     @keyframes rise {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 480px) {
-      .logo { margin-bottom: 32px; }
-      .logo img { height: 30px; }
+      .logo { margin-bottom: 34px; }
+      .logo img { height: 32px; }
     }
   </style>
 </head>
 <body>
 <div class="page">
+
   <div class="logo">
-    <img src="https://aurios.io/images/auri-logo-primary.png" alt="Auri by AuriOS™" />
+    <img src="/auri-logo-primary.png" alt="Auri by AuriOS™" />
   </div>
-  <h1>Custos Aurum<span class="tm">™</span></h1>
+
+  <h1>Custos <span class="aurum">Aurum</span><span class="tm">™</span></h1>
+
   <p class="subtitle">Your memory. Held in common.</p>
+
   <div class="rule"></div>
-  <p class="desc">Your memories. <em>Owned by you.</em></p>
-  <p class="desc">Governed by its Members.</p>
-  <p class="desc"><em>Your safe deposit box. Not their server.</em></p>
-  <p class="desc" style="margin-top:10px;font-size:clamp(0.76rem,1.1vw,0.86rem);letter-spacing:0.06em;">Coming soon.</p>
+
+  <p class="desc">Your memories. <em>Owned by you.</em><br>
+  Governed by its Members.<br>
+  <em>Your safe deposit box. Not their server.</em></p>
+
+  <p class="coming">Coming soon.</p>
+
   <a class="btn" href="https://aurios.io">← Return to AuriOS™</a>
+
 </div>
 <p class="footer">© 2026 AuriOS™ · YourAI.Host · Houston, Texas</p>
 </body>
