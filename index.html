@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Custos Aurum™ — Guardian of Gold</title>
+  <title>Custos Aurum™ — YourAI.Host</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --navy:      #0D1F5C;
       --gold:      #F5A623;
@@ -17,216 +16,114 @@
       --bluemist:  #D6E4F0;
       --warmwhite: #FAFAF7;
       --midgray:   #6B7280;
-      --gridgray:  #D9E1EA;
     }
-
-    html, body {
-      height: 100%;
-      font-family: 'DM Sans', sans-serif;
-      background: var(--navy);
-      color: var(--warmwhite);
-      overflow: hidden;
-    }
-
-    /* Radial background glow */
+    html, body { height: 100%; font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--warmwhite); overflow: hidden; }
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(245,166,35,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(79,120,184,0.12) 0%, transparent 60%);
+        radial-gradient(ellipse 55% 45% at 50% 38%, rgba(245,166,35,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 75% 55% at 50% 100%, rgba(79,120,184,0.13) 0%, transparent 60%);
       pointer-events: none;
     }
-
-    /* Subtle grid overlay */
     body::after {
       content: '';
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image:
-        linear-gradient(rgba(214,228,240,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(214,228,240,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
+        linear-gradient(rgba(214,228,240,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(214,228,240,0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
       pointer-events: none;
     }
-
     .page {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 24px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px 28px;
     }
-
-    /* Logo mark */
-    .mark {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 40px;
-      opacity: 0;
-      animation: rise 1s ease 0.1s forwards;
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 44px;
+      opacity: 0; animation: rise 0.9s ease 0.1s forwards;
     }
-
-    /* Latin label */
-    .latin {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: rise 0.9s ease 0.3s forwards;
-    }
-
-    /* Main name */
+    .logo img { height: 36px; width: auto; }
     h1 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      line-height: 1.05;
+      font-size: clamp(3.8rem, 8vw, 7rem);
+      line-height: 1.0;
       letter-spacing: -0.01em;
       color: var(--warmwhite);
-      margin-bottom: 8px;
-      opacity: 0;
-      animation: rise 0.9s ease 0.45s forwards;
+      margin-bottom: 6px;
+      opacity: 0; animation: rise 0.9s ease 0.25s forwards;
     }
-
-    h1 .tm {
-      font-size: 0.45em;
-      vertical-align: super;
-      color: var(--gold);
-      font-weight: 400;
-    }
-
-    /* Subtitle */
+    h1 .tm { font-size: 0.38em; vertical-align: super; color: var(--gold); font-weight: 400; }
     .subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
+      font-family: 'DM Sans', sans-serif;
       font-weight: 300;
-      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 40px;
-      opacity: 0;
-      animation: rise 0.9s ease 0.6s forwards;
+      margin-bottom: 36px;
+      opacity: 0; animation: rise 0.9s ease 0.4s forwards;
     }
-
-    /* Rule */
-    .rule {
-      width: 48px;
-      height: 1px;
-      background: rgba(245,166,35,0.35);
-      margin: 0 auto 40px;
-      opacity: 0;
-      animation: rise 0.9s ease 0.7s forwards;
-    }
-
-    /* Description */
+    .rule { width: 44px; height: 1px; background: rgba(245,166,35,0.3); margin: 0 auto 36px; opacity: 0; animation: rise 0.9s ease 0.5s forwards; }
     .desc {
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
-      font-size: clamp(0.88rem, 1.4vw, 1rem);
-      line-height: 1.75;
-      color: rgba(250,250,247,0.55);
-      max-width: 420px;
-      margin: 0 auto 52px;
-      opacity: 0;
-      animation: rise 0.9s ease 0.8s forwards;
+      font-size: clamp(0.85rem, 1.3vw, 0.97rem);
+      line-height: 2.1;
+      color: rgba(250,250,247,0.52);
+      margin-bottom: 4px;
+      opacity: 0; animation: rise 0.9s ease 0.62s forwards;
     }
-
-    /* Button */
+    .desc em { color: rgba(250,250,247,0.82); font-style: normal; }
     .btn {
       display: inline-block;
+      margin-top: 44px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
       text-decoration: none;
-      color: var(--navy);
-      background: var(--gold);
-      padding: 16px 40px;
-      border: none;
-      cursor: pointer;
+      color: var(--navy); background: var(--gold);
+      padding: 15px 40px;
       transition: background 0.2s, transform 0.2s;
-      opacity: 0;
-      animation: rise 0.9s ease 0.95s forwards;
+      opacity: 0; animation: rise 0.9s ease 0.78s forwards;
     }
-
-    .btn:hover {
-      background: #f8b83a;
-      transform: translateY(-2px);
-    }
-
-    /* Footer mark */
+    .btn:hover { background: #f8b83a; transform: translateY(-2px); }
     .footer {
-      position: fixed;
-      bottom: 28px;
-      left: 0;
-      right: 0;
+      position: fixed; bottom: 26px; left: 0; right: 0;
       text-align: center;
-      font-size: 0.68rem;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: rgba(250,250,247,0.2);
-      opacity: 0;
-      animation: rise 0.9s ease 1.1s forwards;
+      font-size: 0.66rem; font-weight: 300; letter-spacing: 0.09em;
+      color: rgba(250,250,247,0.18);
+      opacity: 0; animation: rise 0.9s ease 0.9s forwards;
     }
-
     @keyframes rise {
-      from { opacity: 0; transform: translateY(18px); }
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     @media (max-width: 480px) {
-      .mark { width: 64px; height: 64px; margin-bottom: 32px; }
+      .logo { margin-bottom: 32px; }
+      .logo img { height: 30px; }
     }
   </style>
 </head>
 <body>
-
 <div class="page">
-
-  <!-- Concentric circle mark — matches AuriOS brand exactly -->
-  <svg class="mark" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="40" cy="40" r="38" fill="#D6E4F0" opacity="0.15"/>
-    <circle cx="40" cy="40" r="28" fill="#4F78B8" opacity="0.5"/>
-    <circle cx="40" cy="40" r="18" fill="#0D1F5C"/>
-    <circle cx="40" cy="40" r="18" fill="url(#ring)" opacity="0.4"/>
-    <circle cx="40" cy="40" r="6" fill="#F5A623"/>
-    <defs>
-      <radialGradient id="ring" cx="50%" cy="30%" r="70%">
-        <stop offset="0%" stop-color="#4F78B8"/>
-        <stop offset="100%" stop-color="transparent"/>
-      </radialGradient>
-    </defs>
-  </svg>
-
-  <p class="latin">Custos Aurum</p>
-
-  <h1>Guardian<br>of Gold<span class="tm">™</span></h1>
-
-  <p class="subtitle">The memory entity for AuriOS™</p>
-
+  <div class="logo">
+    <img src="https://aurios.io/images/auri-logo-primary.png" alt="Auri by AuriOS™" />
+  </div>
+  <h1>Custos Aurum<span class="tm">™</span></h1>
+  <p class="subtitle">Your memory. Held in common.</p>
   <div class="rule"></div>
-
-  <p class="desc">
-    Your memories. Owned by you.<br>
-    Governed by its Members.<br>
-    Coming soon.
-  </p>
-
+  <p class="desc">Your memories. <em>Owned by you.</em></p>
+  <p class="desc">Governed by its Members.</p>
+  <p class="desc"><em>Your safe deposit box. Not their server.</em></p>
+  <p class="desc" style="margin-top:10px;font-size:clamp(0.76rem,1.1vw,0.86rem);letter-spacing:0.06em;">Coming soon.</p>
   <a class="btn" href="https://aurios.io">← Return to AuriOS™</a>
-
 </div>
-
 <p class="footer">© 2026 AuriOS™ · YourAI.Host · Houston, Texas</p>
-
 </body>
 </html>
